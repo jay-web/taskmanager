@@ -12,9 +12,13 @@ function TaskForm (props) {
     }
 
     return (
-        <Paper>
+        <Paper style={{ margin: "1rem 0", padding: "0 .2rem"}}>
             <form onSubmit={onSubmit}>
-              <TextField value={value} onChange={handleChange} placeholder="Type here" />
+              <TextField 
+                value={value} 
+                onChange={handleChange} 
+                label="Add new task" 
+                fullWidth/>
             </form>
           
         </Paper>

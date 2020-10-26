@@ -1,27 +1,22 @@
 import React from "react";
-import { List, ListItem, ListItemText, Paper } from '@material-ui/core';
+import { List, Paper } from "@material-ui/core";
+import Task from "./../task/task.component";
 
 
 function TaskList(props) {
-    const {tasks} = props;
-    console.log({tasks});
-    return (
-        <Paper>
-            <List> 
-                {tasks.map((task) => {
-                  return <span key={task.id}>
-                         <ListItem  gutters="true" divider>
-                        <ListItemText >{task.item}</ListItemText>
-                    </ListItem>
-                  </span>
-                
-                
-                
-                })}
-            </List>
-        </Paper>
-       
-    )
+  const { tasks } = props;
+  console.log({ tasks });
+  return (
+    <Paper>
+      <List>
+        {tasks.map((task) => {
+          return (
+            <Task task={task.item} key={task.id} completed={task.completed} />
+          );
+        })}
+      </List>
+    </Paper>
+  );
 }
 
-export default TaskList; 
+export default TaskList;
