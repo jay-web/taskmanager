@@ -27,9 +27,7 @@ function Tasks() {
         const updateTasks = tasks.filter((task) => {
             return task.id  !== taskId;
         })
-
         setTasks(updateTasks);
-
     }
 
     const toggleTask = (taskId) => {
@@ -42,6 +40,18 @@ function Tasks() {
         });
 
         setTasks(updateTasks);
+    }
+
+    const updateTask = (taskId, newItem) => {
+        const updatedTasks = tasks.map(task => {
+            if(task.id === taskId){
+                return {...task, item: newItem}
+            }else{
+                return task;
+            }
+        });
+
+        setTasks(updatedTasks);
     }
     return (
         <Paper
@@ -65,6 +75,7 @@ function Tasks() {
                             tasks={tasks} 
                             removeTask={removeTask} 
                             toggleTask={toggleTask}
+                            updateTask={updateTask}
                             />
                     </Grid>
                    
