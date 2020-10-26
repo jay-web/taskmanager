@@ -6,12 +6,12 @@ import DeleteIcon  from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
 
-function Task ({task, completed, removeTask}) {
+function Task ({task, completed, removeTask, toggleTask}) {
     const textDecoration = completed ? "line-through" : "none";
     return (
         <span>
         <ListItem gutters="true" divider>
-          <Checkbox tabIndex={-1} checked={completed} />  
+          <Checkbox tabIndex={-1} checked={completed} onClick={() => toggleTask(task.id)}/>  
           <ListItemText style={{ textDecoration: textDecoration}}>
              {task.item}
           </ListItemText>

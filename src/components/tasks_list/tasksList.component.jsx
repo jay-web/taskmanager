@@ -3,7 +3,7 @@ import { List, Paper } from "@material-ui/core";
 import Task from "./../task/task.component";
 
 
-function TaskList({tasks, removeTask}) {
+function TaskList({tasks, removeTask, toggleTask}) {
   
   return (
     <Paper>
@@ -15,6 +15,7 @@ function TaskList({tasks, removeTask}) {
                 key={task.id} 
                 completed={task.completed} 
                 removeTask={removeTask}
+                toggleTask={toggleTask}
                 />
           );
         })}

@@ -6,7 +6,7 @@ import ToolBar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import TaskList from "./../tasks_list/tasksList.component";
 import TaskForm from "./../tasks_form/tasksForm.component";
-
+import { v4 as uuidv4} from "uuid";
 
 function Tasks() {
    
@@ -20,7 +20,7 @@ function Tasks() {
     const [tasks, setTasks ] = useState(demoTasks);
    
     const addTask = (newTask) => {
-        setTasks([...tasks, {id: 4, item: newTask, completed: false}])
+        setTasks([...tasks, {id: uuidv4(), item: newTask, completed: false}])
     }
 
     const removeTask = (taskId) => {
@@ -30,6 +30,18 @@ function Tasks() {
 
         setTasks(updateTasks);
 
+    }
+
+    const toggleTask = (taskId) => {
+        const updateTasks = tasks.map((task) => {
+            if(task.id === taskId){
+                return { ...task, completed: !task.completed}
+            }else{
+                return task;
+            }
+        });
+
+        setTasks(updateTasks);
     }
     return (
         <Paper
@@ -49,7 +61,11 @@ function Tasks() {
                 <Grid container justify="center" >
                     <Grid item xs={12} md={8} lg={6}>
                         <TaskForm addTask={addTask}/>
-                        <TaskList tasks={tasks} removeTask={removeTask} />
+                        <TaskList 
+                            tasks={tasks} 
+                            removeTask={removeTask} 
+                            toggleTask={toggleTask}
+                            />
                     </Grid>
                    
                 </Grid>
