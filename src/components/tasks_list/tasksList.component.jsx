@@ -3,15 +3,19 @@ import { List, Paper } from "@material-ui/core";
 import Task from "./../task/task.component";
 
 
-function TaskList(props) {
-  const { tasks } = props;
-  console.log({ tasks });
+function TaskList({tasks, removeTask}) {
+  
   return (
     <Paper>
       <List>
         {tasks.map((task) => {
           return (
-            <Task task={task.item} key={task.id} completed={task.completed} />
+            <Task 
+                task={task} 
+                key={task.id} 
+                completed={task.completed} 
+                removeTask={removeTask}
+                />
           );
         })}
       </List>

@@ -6,17 +6,17 @@ import DeleteIcon  from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 
 
-function Task ({task, completed}) {
+function Task ({task, completed, removeTask}) {
     const textDecoration = completed ? "line-through" : "none";
     return (
         <span>
         <ListItem gutters="true" divider>
           <Checkbox tabIndex={-1} checked={completed} />  
           <ListItemText style={{ textDecoration: textDecoration}}>
-             {task}
+             {task.item}
           </ListItemText>
           <ListItemSecondaryAction>
-              <IconButton aria-label="delete">
+              <IconButton aria-label="delete" onClick={() => removeTask(task.id)}>
                   <DeleteIcon />
               </IconButton>
               <IconButton aria-label="edit">

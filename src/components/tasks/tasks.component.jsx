@@ -9,15 +9,27 @@ import TaskForm from "./../tasks_form/tasksForm.component";
 
 
 function Tasks() {
+   
     const demoTasks = [
         {id:"1", item: "banana", completed: true},
         {id:"2", item: "apple", completed: false},
         {id:"3", item: "papaya", completed: true},
 
-    ]
+    ];
+
     const [tasks, setTasks ] = useState(demoTasks);
+   
     const addTask = (newTask) => {
         setTasks([...tasks, {id: 4, item: newTask, completed: false}])
+    }
+
+    const removeTask = (taskId) => {
+        const updateTasks = tasks.filter((task) => {
+            return task.id  !== taskId;
+        })
+
+        setTasks(updateTasks);
+
     }
     return (
         <Paper
@@ -37,7 +49,7 @@ function Tasks() {
                 <Grid container justify="center" >
                     <Grid item xs={12} md={8} lg={6}>
                         <TaskForm addTask={addTask}/>
-                         <TaskList tasks={tasks} />
+                        <TaskList tasks={tasks} removeTask={removeTask} />
                     </Grid>
                    
                 </Grid>
