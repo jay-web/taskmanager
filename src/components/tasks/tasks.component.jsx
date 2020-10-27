@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
@@ -9,17 +9,19 @@ import TaskForm from "./../tasks_form/tasksForm.component";
 import { v4 as uuidv4} from "uuid";
 
 function Tasks() {
-   
-    const demoTasks = [
-        {id:"1", item: "banana", completed: true},
-        {id:"2", item: "apple", completed: false},
-        {id:"3", item: "papaya", completed: true},
+   const initialTasks = JSON.parse(window.localStorage.getItem("tasks") || "[]");
 
-    ];
-
-    const [tasks, setTasks ] = useState(demoTasks);
+    const [tasks, setTasks ] = useState(initialTasks);
    
+    useEffect(() => {
+        window.localStorage.setItem("tasks", JSON.stringify(tasks));
+    }, [tasks]);
+
+
     const addTask = (newTask) => {
+        if(newTask === ""){
+            return;
+        }
         setTasks([...tasks, {id: uuidv4(), item: newTask, completed: false}])
     }
 
@@ -43,6 +45,9 @@ function Tasks() {
     }
 
     const updateTask = (taskId, newItem) => {
+        if(newItem === ""){
+            return;
+        }
         const updatedTasks = tasks.map(task => {
             if(task.id === taskId){
                 return {...task, item: newItem}
