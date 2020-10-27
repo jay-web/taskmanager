@@ -1,8 +1,9 @@
-import {useState } from "react";
-import { v4 as uuidv4} from "uuid";
 
-const useTaskState = (initialTasks) => {
-    const [tasks, setTasks ] = useState(initialTasks);
+import { v4 as uuidv4} from "uuid";
+import useLocalStorageState from "./useLocalStorage";
+
+const useTaskState = (initialasks) => {
+    const [tasks, setTasks ] = useLocalStorageState("todos", initialasks);
 
     const addTask = (newTask) => {
         if(newTask === ""){

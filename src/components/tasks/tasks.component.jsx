@@ -9,19 +9,13 @@ import TaskForm from "./../tasks_form/tasksForm.component";
 import useTaskState from "./../../hooks/useTaskState";
 
 function Tasks() {
-   const initialTasks = JSON.parse(window.localStorage.getItem("tasks") || "[]");
+   const initialTasks = [];
 
     const {tasks, addTask,
         removeTask,
         toggleTask,
         updateTask} = useTaskState(initialTasks);
-   
-    useEffect(() => {
-        window.localStorage.setItem("tasks", JSON.stringify(tasks));
-    }, [tasks]);
-
-
-   
+ 
     return (
         <Paper
             style={{
