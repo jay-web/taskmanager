@@ -6,58 +6,22 @@ import ToolBar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import TaskList from "./../tasks_list/tasksList.component";
 import TaskForm from "./../tasks_form/tasksForm.component";
-import { v4 as uuidv4} from "uuid";
+import useTaskState from "./../../hooks/useTaskState";
 
 function Tasks() {
    const initialTasks = JSON.parse(window.localStorage.getItem("tasks") || "[]");
 
-    const [tasks, setTasks ] = useState(initialTasks);
+    const {tasks, addTask,
+        removeTask,
+        toggleTask,
+        updateTask} = useTaskState(initialTasks);
    
     useEffect(() => {
         window.localStorage.setItem("tasks", JSON.stringify(tasks));
     }, [tasks]);
 
 
-    const addTask = (newTask) => {
-        if(newTask === ""){
-            return;
-        }
-        setTasks([...tasks, {id: uuidv4(), item: newTask, completed: false}])
-    }
-
-    const removeTask = (taskId) => {
-        const updateTasks = tasks.filter((task) => {
-            return task.id  !== taskId;
-        })
-        setTasks(updateTasks);
-    }
-
-    const toggleTask = (taskId) => {
-        const updateTasks = tasks.map((task) => {
-            if(task.id === taskId){
-                return { ...task, completed: !task.completed}
-            }else{
-                return task;
-            }
-        });
-
-        setTasks(updateTasks);
-    }
-
-    const updateTask = (taskId, newItem) => {
-        if(newItem === ""){
-            return;
-        }
-        const updatedTasks = tasks.map(task => {
-            if(task.id === taskId){
-                return {...task, item: newItem}
-            }else{
-                return task;
-            }
-        });
-
-        setTasks(updatedTasks);
-    }
+   
     return (
         <Paper
             style={{
