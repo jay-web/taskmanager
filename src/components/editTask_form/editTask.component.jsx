@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import {TextField} from "@material-ui/core";
 import useInput from "../../hooks/useInput";
+import {TasksContext } from "../../contexts/tasks.contexts";
 
-function EditForm ({task, updateTask, toggle}) {
+function EditForm ({task, toggle}) {
     const [value, handleChange, reset] = useInput(task.item);  // using custom hook
+    const {updateTask} = useContext(TasksContext);
 
     const onSubmit =(e) => {
         e.preventDefault();

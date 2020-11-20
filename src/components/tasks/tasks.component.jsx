@@ -33,7 +33,7 @@ function Tasks() {
                 </AppBar>
                 <Grid container justify="center" >
                     <Grid item xs={12} md={8} lg={6}>
-                        <TaskForm addTask={addTask}/>
+                        <TaskForm/>
                         <TaskList 
                             tasks={tasks} 
                             removeTask={removeTask} 

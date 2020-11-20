@@ -1,13 +1,14 @@
-import React from "react";
+import React, {useContext } from "react";
 import {Paper, TextField} from "@material-ui/core";
 import useInput from "../../hooks/useInput";
+import {TasksContext} from "../../contexts/tasks.contexts";
 
-function TaskForm (props) {
+function TaskForm () {
     const [value, handleChange, reset ] = useInput("");
-
+    const {addTask } = useContext(TasksContext);
     const onSubmit = (e) => {
         e.preventDefault();
-        props.addTask(value);
+        addTask(value);
         reset();
     }
 
