@@ -7,11 +7,11 @@ import { IconButton, ListItemSecondaryAction } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import EditForm from "../editTask_form/editTask.component";
-import {TasksContext } from "../../contexts/tasks.contexts";
+import {DispatchContext } from "../../contexts/tasks.contexts";
 
 function Task({ task, completed }) {
   const [isEditing, toggle] = useToggle(false);
-  const { dispatch } = useContext(TasksContext);
+  const  dispatch  = useContext(DispatchContext);
 
   const textDecoration = completed ? "line-through" : "none";
   return (

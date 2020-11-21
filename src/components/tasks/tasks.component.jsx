@@ -13,7 +13,7 @@ function Tasks() {
    const initialTasks = [];
 
     // const {tasks} = useTaskState(initialTasks);
-    const {tasks } = useContext(TasksContext);
+    const tasks  = useContext(TasksContext);
  
     return (
         <Paper

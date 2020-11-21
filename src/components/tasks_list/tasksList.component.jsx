@@ -5,7 +5,7 @@ import {TasksContext} from "../../contexts/tasks.contexts";
 
 
 function TaskList() {
-  const {tasks} = useContext(TasksContext);
+  const tasks = useContext(TasksContext);
 
   if(tasks.length){
     return (
@@ -13,10 +13,10 @@ function TaskList() {
         <List>
           {tasks.map((task, i) => {
             return (
-              <React.Fragment>
+              <React.Fragment key={task.id} >
               <Task 
                   task={task} 
-                  key={task.id} 
+                  
                   completed={task.completed} 
                 
                   />
