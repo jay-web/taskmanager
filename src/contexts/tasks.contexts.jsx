@@ -10,6 +10,7 @@ export const DispatchContext = createContext();
 
 export function TasksProvider(props) {
   // const todosmethods = useTaskState(defaultTasks);
+  // const [tasks, dispatch] = useReducer(taskReducer);
   const [tasks, dispatch] = useLocalStorageReducer("todos", defaultTasks, taskReducer);
 
   return (
