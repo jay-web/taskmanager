@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, memo} from "react";
 import useToggle from "./../../hooks/useToggle";
 
 import { ListItem, ListItemText, Checkbox } from "@material-ui/core";
@@ -14,6 +14,7 @@ function Task({ task, completed }) {
   const  dispatch  = useContext(DispatchContext);
 
   const textDecoration = completed ? "line-through" : "none";
+  console.log(task);
   return (
     <span>
       <ListItem gutters="true" 
@@ -48,4 +49,4 @@ function Task({ task, completed }) {
   );
 }
 
-export default Task;
+export default memo(Task);
