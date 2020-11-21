@@ -5,10 +5,11 @@ import {TasksContext} from "../../contexts/tasks.contexts";
 
 function TaskForm () {
     const [value, handleChange, reset ] = useInput("");
-    const {addTask } = useContext(TasksContext);
+    const {dispatch } = useContext(TasksContext);
     const onSubmit = (e) => {
         e.preventDefault();
-        addTask(value);
+        dispatch({type: "ADD_TASK", task: value});
+        // addTask(value);
         reset();
     }
 

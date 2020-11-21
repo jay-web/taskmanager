@@ -11,7 +11,7 @@ import {TasksContext } from "../../contexts/tasks.contexts";
 
 function Task({ task, completed }) {
   const [isEditing, toggle] = useToggle(false);
-  const { removeTask, toggleTask} = useContext(TasksContext);
+  const { dispatch } = useContext(TasksContext);
 
   const textDecoration = completed ? "line-through" : "none";
   return (
@@ -23,7 +23,7 @@ function Task({ task, completed }) {
             <Checkbox
               tabIndex={-1}
               checked={completed}
-              onClick={() => toggleTask(task.id)}
+              onClick={() => dispatch({type: "TOGGLE_TASK", id: task.id})}
             />
             <ListItemText style={{ textDecoration: textDecoration }}>
               {task.item}
@@ -31,7 +31,7 @@ function Task({ task, completed }) {
             <ListItemSecondaryAction>
               <IconButton
                 aria-label="delete"
-                onClick={() => removeTask(task.id)}
+                onClick={() => dispatch({type: "REMOVE_TASK", id: task.id})}
               >
                 <DeleteIcon />
               </IconButton>

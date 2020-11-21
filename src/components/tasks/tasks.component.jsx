@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from "react";
+import React, {useContext } from "react";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
@@ -7,14 +7,13 @@ import Grid from "@material-ui/core/Grid";
 import TaskList from "./../tasks_list/tasksList.component";
 import TaskForm from "./../tasks_form/tasksForm.component";
 import useTaskState from "./../../hooks/useTaskState";
+import {TasksContext} from "../../contexts/tasks.contexts";
 
 function Tasks() {
    const initialTasks = [];
 
-    const {tasks, addTask,
-        removeTask,
-        toggleTask,
-        updateTask} = useTaskState(initialTasks);
+    // const {tasks} = useTaskState(initialTasks);
+    const {tasks } = useContext(TasksContext);
  
     return (
         <Paper
@@ -36,9 +35,7 @@ function Tasks() {
                         <TaskForm/>
                         <TaskList 
                             tasks={tasks} 
-                            removeTask={removeTask} 
-                            toggleTask={toggleTask}
-                            updateTask={updateTask}
+                         
                             />
                     </Grid>
                    

@@ -5,11 +5,12 @@ import {TasksContext } from "../../contexts/tasks.contexts";
 
 function EditForm ({task, toggle}) {
     const [value, handleChange, reset] = useInput(task.item);  // using custom hook
-    const {updateTask} = useContext(TasksContext);
+    const {dispatch} = useContext(TasksContext);
 
     const onSubmit =(e) => {
         e.preventDefault();
-        updateTask(task.id, value);
+        dispatch({type: "UPDATE_TASK", id: task.id, newTask: value});
+        // updateTask(task.id, value);
         toggle();
         reset()
 
