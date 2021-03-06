@@ -18,7 +18,7 @@ function Task({ task, completed }) {
   return (
     <span>
       <ListItem gutters="true" 
-        style={{ height : "64px"}}>
+        style={{ height : "64px", width: "80%"}}>
         {!isEditing ? (
           <>
             <Checkbox
@@ -26,10 +26,10 @@ function Task({ task, completed }) {
               checked={completed}
               onClick={() => dispatch({type: "TOGGLE_TASK", id: task.id})}
             />
-            <ListItemText style={{ textDecoration: textDecoration }}>
+            <ListItemText style={{ textDecoration: textDecoration, wordWrap: "break-word", }} disableTypography={false}>
               {task.item}
             </ListItemText>
-            <ListItemSecondaryAction>
+            <ListItemSecondaryAction style={{ position: "absolute", right: "-100px"}}>
               <IconButton
                 aria-label="delete"
                 onClick={() => dispatch({type: "REMOVE_TASK", id: task.id})}

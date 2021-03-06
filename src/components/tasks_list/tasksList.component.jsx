@@ -1,27 +1,21 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { List, Paper, Divider } from "@material-ui/core";
 import Task from "./../task/task.component";
-import {TasksContext} from "../../contexts/tasks.contexts";
-
+import { TasksContext } from "../../contexts/tasks.contexts";
 
 function TaskList() {
   const tasks = useContext(TasksContext);
 
-  if(tasks.length){
+  if (tasks.length) {
     return (
       <Paper>
         <List>
           {tasks.map((task, i) => {
             return (
-              <React.Fragment key={task.id} >
-              <Task 
-                  task={task} 
-                  
-                  completed={task.completed} 
-                
-                  />
+              <React.Fragment key={task.id}>
+                <Task task={task} completed={task.completed} />
                 {i < tasks.length - 1 && <Divider />}
-                </React.Fragment>
+              </React.Fragment>
             );
           })}
         </List>
@@ -30,7 +24,6 @@ function TaskList() {
   }
 
   return null;
- 
 }
 
 export default TaskList;
