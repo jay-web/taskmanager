@@ -1,8 +1,15 @@
-# Getting Started with Create React App
+# Tasks - React web application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Tasks is the web application to note your daily task as a reminder. CRUD operation are implemented using React new features React hooks like useState, useEffect, useMemo etc.
+
 
 ## Available Scripts
+
+After download the repo:
+
+### `npm install`
+
+All the required packages will get download.
 
 In the project directory, you can run:
 
