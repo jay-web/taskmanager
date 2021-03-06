@@ -2,8 +2,11 @@
 
 Tasks is the web application to note your daily task as a reminder. CRUD operation are implemented using React new features React hooks like useState, useEffect, useMemo etc.
 
+## Go live
 
-## Available Scripts
+https://github.com/jay-web/taskmanager
+
+### Available Scripts
 
 After download the repo:
 
