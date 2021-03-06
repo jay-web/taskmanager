@@ -4,7 +4,7 @@ Tasks is the web application to note your daily task as a reminder. CRUD operati
 
 ## Go live
 
-https://github.com/jay-web/taskmanager
+https://jay-web.github.io/taskmanager/
 
 ### Available Scripts
 
