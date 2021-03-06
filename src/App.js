@@ -6,7 +6,10 @@ import {TasksProvider} from "./contexts/tasks.contexts";
 function App() {
   return (
     <TasksProvider>
+     
       <Tasks />
+     
+     
     </TasksProvider>
   );
 }
